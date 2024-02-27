@@ -6,3 +6,40 @@ body {
 a {
   color: #00B7FF;
 }
+.box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 35px;
+ column-gap: 50px;
+  width: 40vw;
+  background-color: lightblue;
+  height: 50vh;
+}
+.flex{
+  display: flex;
+  
+  justify-content: space-between;
+}
+.col{
+  display: flex;
+  
+  flex-direction: column;
+}
+input{
+  align-self: start;
+  border-radius: 6px;
+  height: 20px;
+}
+.n{
+  width: 90%;
+}
+.email{
+ display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+.em{
+  width: 100%;
+}

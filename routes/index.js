@@ -5,5 +5,8 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
+router.get('/sign-up', function(req, res, next) {
+  res.render('sign-up_form');
+});
 
 module.exports = router;
