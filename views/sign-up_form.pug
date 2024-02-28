@@ -4,20 +4,23 @@ block content
 
     h1 Sign up
     form.box
-        div.flex
-            div.col
-                label(for="first") First Name:
-                input(type="text" name="first").n 
-            div.col
-                label(for="last") Last Name:
-                input(type="text" name="last").n
-        div.email
-            label(for="email") Email:
-            input(type="email" name="email").em
-        div.flex
-            div.col
-                label(for="password") Password:
-                input(type="password" name="password").n
-            div.col
-                label(for="confirm") Confirm password:
-                input(type="password" name="confirm").n
+        div.col.w
+            div.flex
+                div.col
+                    label(for="first") First Name:
+                    input(type="text" name="first" required).n 
+                div.col
+                    label(for="last") Last Name:
+                    input(type="text" name="last" required).n
+            div.email
+                label(for="email").start Email:
+                input(type="email" name="email" required).em
+            div.flex
+                div.col
+                    label(for="password") Password:
+                    input(type="password" name="password" required).n
+                div.col
+                    label(for="confirm") Confirm password:
+                    input(type="password" name="confirm" required).n
+            div.b
+                button(type="submit") Submit
