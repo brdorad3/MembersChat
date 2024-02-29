@@ -3,7 +3,7 @@ extends layout
 block content 
 
     h1 Sign up
-    form.box
+    form.box(method="POST")
         div.col.w
             div.flex
                 div.col
@@ -18,7 +18,7 @@ block content
             div.flex
                 div.col
                     label(for="password") Password:
-                    input(type="password" name="password" required).n
+                    input(type="password" name="password" required minLength=8).n
                 div.col
                     label(for="confirm") Confirm password:
                     input(type="password" name="confirm" required).n

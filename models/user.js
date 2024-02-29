@@ -12,14 +12,14 @@ const UserSchema = new Schema({
         required:true
     },
     email: {
-        type: email,
+        type: String,
         required: true,
     },
     password: {
-        type: password,
+        type: String,
         required: true,
     },
-    status: {
+    member: {
         type: Boolean,
         default: false
     },
@@ -30,4 +30,4 @@ const UserSchema = new Schema({
 
 })
 
-module.export = mongoose.model("User", UserSchema)
+module.exports = mongoose.model("User", UserSchema)
