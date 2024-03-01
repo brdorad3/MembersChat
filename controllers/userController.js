@@ -18,7 +18,15 @@ exports.sign_up_get = asyncHandler(async(req, res, next)=>{
 exports.sign_up_post = [
     body("first").trim().isLength({min:1}).escape(),
     body("last").trim().isLength({min:1}).escape(),
-    body("email").trim().isLength({min:1}).isEmail().escape(),
+    body("email").trim().isLength({min:1}).isEmail().withMessage("Please enter a valid email address")
+    .custom(async (value) => {
+        const user = await User.findOne({ email: value });
+        if (user) {
+            throw new Error("Email is already in use");
+        }
+        // If email is unique, return true
+        return true;
+    }).escape(),
     body("password").trim().isLength({min:8}).isStrongPassword().withMessage('Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.').escape(),
     body("confirm").custom((value, { req }) => {
         if (value !== req.body.password) {
@@ -35,9 +43,6 @@ exports.sign_up_post = [
         }
 
 
-
-
-    
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
         const user = new User({
             first_name: req.body.first,
@@ -47,12 +52,9 @@ exports.sign_up_post = [
             member: false,
             admin: false
         });
-       
-       
             await user.save();
             res.redirect("/");
         
-    
     })
 ];
 exports.log_in_get = asyncHandler(async(req, res, next)=>{
