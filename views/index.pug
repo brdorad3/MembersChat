@@ -1,11 +1,13 @@
 extends layout
 
 block content
-  if user 
-    h1 Welcome #{user.first_name} #{user.last_name} 
-    a(href="/log-out") log out
-  h1 Robnite
-  p Chat with the members!
-  if user
-    if user.member
-      p Create new
+  div.fflex
+    div.first
+      h1 Robnite
+      p Chat with the members!
+      if user
+        if user.member
+          p Create new
+    if user 
+      div.mid
+        h1 Welcome #{user.first_name} #{user.last_name} 

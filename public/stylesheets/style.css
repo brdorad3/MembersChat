@@ -85,3 +85,19 @@ input:hover{
 .btn{
   margin-top: 10px;
 }
+.first{
+  justify-self: flex-start;
+}
+.fflex{
+  display: flex;
+  justify-content: space-between;
+}
+.mid{
+  margin: 0 auto;
+  padding-right: 200px;
+}
+@media only screen and ( max-width: 735px) {
+  .mid{
+    padding: 0px;
+  }
+}
