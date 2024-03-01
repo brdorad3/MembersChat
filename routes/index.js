@@ -4,11 +4,10 @@ const userCon = require("../controllers/userController")
 
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+router.get('/', userCon.index)
 router.get('/sign-up', userCon.sign_up_get);
 router.post("/sign-up", userCon.sign_up_post);
 router.get('/log-in', userCon.log_in_get)
+router.post('/log-in', userCon.log_in_post)
 
 module.exports = router;

@@ -8,20 +8,20 @@ block content
             div.flex
                 div.col
                     label(for="first") First Name:
-                    input(type="text" name="first" required).n 
+                    input(type="text" name="first" required minLength=1 maxLength=10).n 
                 div.col
                     label(for="last") Last Name:
-                    input(type="text" name="last" required).n
+                    input(type="text" name="last" required minLength=1 maxLength=10).n
             div.email
                 label(for="email").start Email:
-                input(type="email" name="email" required).em
+                input(type="email" name="email" required minLength=1 maxLength=10).em
             div.flex
                 div.col
                     label(for="password") Password:
-                    input(type="password" name="password" required minLength=8).n
+                    input(type="password" name="password" required minLength=8 maxLength=25).n
                 div.col
                     label(for="confirm") Confirm password:
-                    input(type="password" name="confirm" required).n
+                    input(type="password" name="confirm" required minLength=8).n
             div.b
                 button(type="submit").btn Submit
 
