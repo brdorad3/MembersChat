@@ -1,0 +1,9 @@
+extends layout 
+
+block content
+    h1 Become a member 
+    p Enter a secret passcode
+    form(method="POST")
+        label(for="pass")
+        input(type="number" name="pass")
+        button(type="submit") Submit

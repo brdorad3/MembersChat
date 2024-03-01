@@ -3,13 +3,15 @@ const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
 const passport = require("passport");
 const bcrypt = require('bcryptjs');
+require('dotenv').config()
 
 exports.index = asyncHandler(async(req, res, next)=>{
+    
     res.render("index", { user: req.user })
 })
 
 exports.sign_up_get = asyncHandler(async(req, res, next)=>{
-    console.log(res.locals);
+    
     res.render("sign-up_form")
     
 })
@@ -24,7 +26,6 @@ exports.sign_up_post = [
         if (user) {
             throw new Error("Email is already in use");
         }
-        // If email is unique, return true
         return true;
     }).escape(),
     body("password").trim().isLength({min:8}).isStrongPassword().withMessage('Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.').escape(),
@@ -60,11 +61,21 @@ exports.sign_up_post = [
 exports.log_in_get = asyncHandler(async(req, res, next)=>{
 
     res.render("log-in_form")
-})
+});
 exports.log_in_post= passport.authenticate("local", {
       successRedirect: "/",
       failureRedirect: "/log-in",
       failureFlash: true
-    })
-  
-    
+    });
+
+exports.member_post = asyncHandler(async(req, res, next)=>{
+    console.log(req.body.pass)
+    if(req.body.pass==process.env.PASS.trim()){
+        await User.findByIdAndUpdate(req.user._id, {member: true});
+        res.redirect("/")
+    }
+    else{
+        throw new Error("Incorrect passcode")
+    }
+
+})

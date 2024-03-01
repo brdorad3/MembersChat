@@ -30,7 +30,7 @@ app.set('view engine', 'pug');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(session({ secret: process.env.SECRET, resave: false, saveUninitialized: true }));
+app.use(session({ secret: process.env.SECRET, resave: false, saveUninitialized: true, cookie: { maxAge : new Date(Date.now() + 3600000) } }));
 app.use(passport.session());
 app.use(flash())
 app.use(express.urlencoded({ extended: false }));
