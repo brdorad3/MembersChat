@@ -75,3 +75,13 @@ input:valid{
 input:hover{
   border: 3px solid #f8b500;
 }
+.log{
+  display: flex;
+  flex-direction: column;
+}
+.in{
+  width: 20%;
+}
+.btn{
+  margin-top: 10px;
+}

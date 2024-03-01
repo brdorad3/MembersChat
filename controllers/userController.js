@@ -4,8 +4,9 @@ const { body, validationResult } = require("express-validator");
 const bcrypt = require('bcryptjs');
 
 exports.sign_up_get = asyncHandler(async(req, res, next)=>{
-
+    console.log(res.locals);
     res.render("sign-up_form")
+    
 })
 
 
@@ -48,4 +49,12 @@ exports.sign_up_post = [
         
     
     })
-]
+];
+exports.log_in_get = asyncHandler(async(req, res, next)=>{
+
+    res.render("log-in_form")
+})
+exports.log_in_post = asyncHandler(async(req, res, next)=>{
+
+    res.render("sign-up_form")
+})

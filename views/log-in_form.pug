@@ -1,0 +1,13 @@
+extends layout 
+
+block content
+    h1 Log in
+    form.log(method="POST")
+        
+        label(for="email") Email:
+        input(type="email" name="email" required).in
+            
+        label(for="password") Password:
+        input(type="password" name="password" required minLength=8).in
+        div
+            button(type="submit").btn Submit
