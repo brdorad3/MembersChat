@@ -7,7 +7,9 @@ block content
       p Chat with the members!
       if user
         if user.member
-          p Create new
+          div.blue
+            a.an(href="/message") Create new 
+            img.svg(src="/images/plus-thick.svg", alt="")
     if user 
       div.mid
         h1 Welcome #{user.first_name} #{user.last_name} 

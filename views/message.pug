@@ -1,0 +1,7 @@
+extends layout 
+
+block content
+    h1 Create a new message
+    form.log(method="POST")
+        textarea(name="content" required)
+        button(type="submit").btn Submit
