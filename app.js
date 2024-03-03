@@ -37,12 +37,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-app.use(function(req, res, next){
-  res.locals.wow = "wow";
-  console.log(res.locals)
-  next();
-})
+app.get("/logout", (req, res, next) => {
+  req.logout((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
+});
 
 passport.use(
   new LocalStrategy({
@@ -79,14 +81,6 @@ passport.deserializeUser(async (id, done) => {
   } catch(err) {
     done(err);
   };
-});
-app.get("/log-out", (req, res, next) => {
-  req.logout((err) => {
-    if (err) {
-      return next(err);
-    }
-    res.redirect("/");
-  });
 });
 
 app.use('/', indexRouter);

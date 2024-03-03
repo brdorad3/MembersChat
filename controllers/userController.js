@@ -4,16 +4,17 @@ const { body, validationResult } = require("express-validator");
 const passport = require("passport");
 const bcrypt = require('bcryptjs');
 require('dotenv').config()
+const Message = require("../models/message");
 
 exports.index = asyncHandler(async(req, res, next)=>{
-    
-    res.render("index", { user: req.user })
+    const messages = await Message.find().sort({date:-1}).exec()
+    res.render("index", { user: req.user , messages})
 })
 
 exports.sign_up_get = asyncHandler(async(req, res, next)=>{
     
     res.render("sign-up_form")
-    
+    console.log(res.locals)
 })
 
 
@@ -66,6 +67,7 @@ exports.log_in_post= passport.authenticate("local", {
       successRedirect: "/",
       failureRedirect: "/log-in",
       failureFlash: true
+      
     });
 
 exports.member_post = asyncHandler(async(req, res, next)=>{

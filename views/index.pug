@@ -13,3 +13,8 @@ block content
     if user 
       div.mid
         h1 Welcome #{user.first_name} #{user.last_name} 
+
+  if messages 
+    ul
+      each message in messages 
+        li= message.time.toLocaleString()  + ': ' + message.content
