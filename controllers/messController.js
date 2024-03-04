@@ -22,7 +22,7 @@ exports.create_post = asyncHandler(async (req, res, next) => {
 
    
     const message = new Message({
-        time: DateTime.now().toLocaleString(),
+        time: DateTime.now(),
         content: req.body.content,
         author: req.user
     });
@@ -34,3 +34,25 @@ exports.create_post = asyncHandler(async (req, res, next) => {
     
     res.redirect("/")
 });
+exports.delete_get = asyncHandler(async(req, res, next)=>{
+    const message = await Message.findById(req.params.id);
+    res.render("delete", {message: message})
+})
+exports.delete_post = asyncHandler(async(req, res, next) => {
+    try {
+        const messageId = req.params.id;
+        
+        // Log request parameters for debugging
+        console.log('Message ID:', messageId);
+
+        // Delete message from the database
+        const deletedMessage = await Message.findByIdAndDelete(messageId);
+        res.redirect("/")
+    } catch (error) {
+        // Handle errors
+        console.error('Error deleting message:', error);
+        next(error); // Forward error to error handler
+    }
+    
+});
+

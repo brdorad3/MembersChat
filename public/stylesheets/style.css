@@ -1,5 +1,5 @@
 body {
-  padding: 50px;
+  padding: 30px 50px 50px 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -19,7 +19,7 @@ a {
 }
 .flex{
   display: flex;
-  
+  align-items: center;
   justify-content: space-evenly;
 }
 .col{
@@ -104,13 +104,71 @@ input:hover{
 .blue{
   display: flex;
   border: 1px solid black;
- 
+ padding: 0;
   background-color: #7c73e6;
   justify-content: center;
   color: white;
+  margin-left: 140px;
+  width: 100px;
 }
 .svg{max-width: 18%;}
 .an{
   color: white;
   padding: 10px;
+}
+li{
+  list-style: none;
+}
+.index{
+  
+  padding: 10px;
+  border: 2px solid gray;
+  border-radius: 8px;
+  width: 40%;
+  box-shadow: 2px 3px 5px gray;
+}
+.inn{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  
+}
+.bold{
+  font-weight: 900;
+  display: flex;
+  justify-content: space-between;
+}
+.right{
+  float: right;
+  border-bottom: 1px solid grey;
+}
+.max{
+  max-width: 60%;
+  
+  word-wrap: break-word;
+}
+.left{
+  float: left;
+}
+.blue a{
+  padding: 13px 0px;
+}
+.del{
+  padding: 0;
+  margin: 0;
+}
+.pos{
+  position: relative;
+  max-width: 300px;
+}
+.f{
+  width: 100%;
+}
+.s{
+ position: absolute;
+ top: 0;
+ right: 0;
+ width: 13%;
+ 
 }

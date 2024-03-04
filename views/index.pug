@@ -3,8 +3,6 @@ extends layout
 block content
   div.fflex
     div.first
-      h1 Robnite
-      p Chat with the members!
       if user
         if user.member
           div.blue
@@ -13,8 +11,16 @@ block content
     if user 
       div.mid
         h1 Welcome #{user.first_name} #{user.last_name} 
-
   if messages 
-    ul
+    ul.inn
       each message in messages 
-        li= message.time.toLocaleString()  + ': ' + message.content
+        div.index
+          if user
+            if user.member
+              li.bold #{message.author.first_name} #{message.author.last_name}
+                if user.admin 
+                  a.del(href=message.url+"/delete") del
+          li.max #{message.content} 
+          if user 
+            if user.member
+              li.right #{message.time.toLocaleString()}

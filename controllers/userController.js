@@ -2,13 +2,15 @@ const User = require("../models/user");
 const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
 const passport = require("passport");
+const { DateTime } = require("luxon");
 const bcrypt = require('bcryptjs');
 require('dotenv').config()
 const Message = require("../models/message");
 
 exports.index = asyncHandler(async(req, res, next)=>{
-    const messages = await Message.find().sort({date:-1}).exec()
-    res.render("index", { user: req.user , messages})
+    const messages = await Message.find().sort({ time: -1}).populate("author").exec();
+   
+    res.render("index", { user: req.user, messages: messages })
 })
 
 exports.sign_up_get = asyncHandler(async(req, res, next)=>{
@@ -81,3 +83,4 @@ exports.member_post = asyncHandler(async(req, res, next)=>{
     }
 
 })
+
